@@ -1,4 +1,9 @@
-<div class="tabs" style="float: left; width: 65%; margin-left: 0;">
+<style>form div.right
+{
+  width:38% !important;
+}
+</style>
+<div class="tabs" style="float: left; width: 60%; margin-left: 0;">
   <ul>
     <% I18n.available_locales.each do |l| %>
       <li><%= link_to t(l), "#tabs-#{l}" %></li>
