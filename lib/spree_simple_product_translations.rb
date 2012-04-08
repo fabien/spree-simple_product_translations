@@ -13,29 +13,29 @@ module SpreeSimpleProductTranslations
         Rails.env.production? ? require(c) : load(c)
       end
 
-      ::Product.class_eval do
+      Spree::Product.class_eval do
         accepts_nested_attributes_for :translations
       end
       
-      ::ProductProperty.class_eval do
+      Spree::ProductProperty.class_eval do
         accepts_nested_attributes_for :translations, :reject_if => proc { |attributes| attributes['value'].blank? }
         validates_presence_of :value
       end
       
-      ::Property.class_eval do
+      Spree::Property.class_eval do
         accepts_nested_attributes_for :translations
       end
       
-      ::Taxon.class_eval do
+      Spree::Taxon.class_eval do
         accepts_nested_attributes_for :translations
       end
 
-      ::OptionType.class_eval do
+      Spree::OptionType.class_eval do
         accepts_nested_attributes_for :translations, :reject_if => proc { |attributes| attributes['presentation'].blank? }
         accepts_nested_attributes_for :option_values, :allow_destroy => true
       end
 
-      ::OptionValue.class_eval do
+      Spree::OptionValue.class_eval do
         accepts_nested_attributes_for :translations, :reject_if => proc { |attributes| attributes['presentation'].blank? }
         validates_presence_of :name
       end
